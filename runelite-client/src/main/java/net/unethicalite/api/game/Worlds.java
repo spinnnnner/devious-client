@@ -140,7 +140,7 @@ public class Worlds
 			return;
 		}
 
-		log.debug("Hoping to world {}", world.getId());
+		log.debug("Hopping to world {}", world.getId());
 		Static.getClient().interact(1, MenuAction.CC_OP.getId(), world.getId(), WidgetInfo.WORLD_SWITCHER_LIST.getId());
 		if (!spam)
 		{

@@ -1,6 +1,7 @@
 package net.unethicalite.api.widgets;
 
 import net.unethicalite.api.commons.Predicates;
+import net.unethicalite.api.commons.Time;
 import net.unethicalite.api.game.GameThread;
 import net.unethicalite.api.input.Keyboard;
 import net.unethicalite.api.items.GrandExchange;
@@ -276,5 +277,39 @@ public class Dialog
 		}
 
 		return widget == null ? "" : widget.getText();
+	}
+
+	public static void finishDialogue(String... args){
+		int i = 0;
+		while (isOpen()){
+			if (canContinue()){
+				continueSpace();
+				Time.sleepTick();
+			}
+			else if (isViewingOptions()){
+				if (chooseOption(args[i])){
+					// chose successfully
+					i++;
+				}
+				// else?
+			}
+		}
+	}
+
+	public static void finishDialogue(int... args){
+		int i = 0;
+		while (isOpen()){
+			if (canContinue()){
+				continueSpace();
+				Time.sleepTick();
+			}
+			else if (isViewingOptions()){
+				if (chooseOption(args[i])){
+					// chose successfully
+					i++;
+				}
+				// else?
+			}
+		}
 	}
 }

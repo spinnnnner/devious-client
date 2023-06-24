@@ -141,7 +141,7 @@ public class ScriptInspector extends DevToolsFrame
 		this.client = client;
 		this.configManager = configManager;
 
-		setTitle("OpenOSRS Script Inspector");
+		setTitle("Runelite Script Inspector");
 
 		setLayout(new BorderLayout());
 

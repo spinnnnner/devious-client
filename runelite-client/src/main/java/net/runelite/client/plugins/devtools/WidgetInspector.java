@@ -127,7 +127,7 @@ class WidgetInspector extends DevToolsFrame
 
 		eventBus.register(this);
 
-		setTitle("OpenOSRS Widget Inspector");
+		setTitle("Runelite Widget Inspector");
 
 		setLayout(new BorderLayout());
 

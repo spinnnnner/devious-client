@@ -44,12 +44,12 @@ public class NeverLogManager
 
 	private long randomDelay()
 	{
-		return (long) clamp(Math.round(ThreadLocalRandom.current().nextGaussian() * 8000));
+		return (long) clamp(Math.round(ThreadLocalRandom.current().nextGaussian() * 2000) + 6000);
 	}
 
 	private double clamp(double value)
 	{
-		return Math.max(1, Math.min(13000, value));
+		return Math.max(2938, Math.min(11227, value));
 	}
 
 	private void pressKey()

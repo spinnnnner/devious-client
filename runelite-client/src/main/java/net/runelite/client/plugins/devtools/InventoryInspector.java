@@ -86,7 +86,7 @@ class InventoryInspector extends DevToolsFrame
 		this.deltaPanel = new InventoryDeltaPanel(itemManager);
 
 		setLayout(new BorderLayout());
-		setTitle("OpenOSRS Inventory Inspector");
+		setTitle("Runelite Inventory Inspector");
 		setIconImage(ClientUI.ICON);
 
 		tree.setBorder(new EmptyBorder(2, 2, 2, 2));

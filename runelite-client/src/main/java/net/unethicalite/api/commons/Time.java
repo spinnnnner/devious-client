@@ -1,5 +1,6 @@
 package net.unethicalite.api.commons;
 
+import java.util.concurrent.ThreadLocalRandom;
 import net.unethicalite.api.game.Game;
 import net.runelite.api.GameState;
 import net.unethicalite.client.Static;
@@ -12,7 +13,7 @@ import java.util.function.BooleanSupplier;
 public class Time
 {
 	private static final Logger logger = LoggerFactory.getLogger(Time.class);
-	private static final int DEFAULT_POLLING_RATE = 10;
+	private static final int DEFAULT_POLLING_RATE = 25;
 
 	public static boolean sleep(long ms)
 	{
@@ -119,9 +120,19 @@ public class Time
 		return true;
 	}
 
+	public static boolean sleepTicks(int low, int high){
+		int sleepTicks = ThreadLocalRandom.current().nextInt(low,high);
+		return sleepTicks(sleepTicks);
+	}
+
 	public static boolean sleepTick()
 	{
 		return sleepTicks(1);
+	}
+
+	public static boolean sleepOneTickThenUntil(BooleanSupplier supplier, int ticks){
+		sleepTick();
+		return sleepTicksUntil(supplier, ticks);
 	}
 
 	public static boolean sleepTicksUntil(BooleanSupplier supplier, int ticks)

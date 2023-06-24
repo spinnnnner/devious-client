@@ -21,11 +21,6 @@ class URLDownloader
 
 	void download() throws IOException
 	{
-		this.downloadFromURL();
-	}
-
-	private void downloadFromURL() throws IOException
-	{
 		ReadableByteChannel rbc = Channels.newChannel(url.openStream());
 		FileOutputStream fos = new FileOutputStream(output);
 

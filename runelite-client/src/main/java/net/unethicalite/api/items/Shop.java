@@ -1,5 +1,6 @@
 package net.unethicalite.api.items;
 
+import net.unethicalite.api.packets.MousePackets;
 import net.unethicalite.api.widgets.Widgets;
 import net.runelite.api.widgets.Widget;
 import org.apache.commons.lang3.StringUtils;
@@ -168,6 +169,7 @@ public class Shop
 				}
 
 				item.interact(action);
+				MousePackets.queueClickPacket(item);
 				return;
 			}
 		}

@@ -72,7 +72,7 @@ public class FpsDrawListener implements Runnable
 			? config.maxFpsUnfocused()
 			: config.maxFps();
 
-		targetDelay = 1000 / Math.max(1, fps);
+		targetDelay = (long) (1000 / Math.max(0.2, fps));
 		
 		sleepDelay = targetDelay;
 

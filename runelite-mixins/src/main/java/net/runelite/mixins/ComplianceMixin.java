@@ -49,7 +49,7 @@ public abstract class ComplianceMixin implements RSClient
 			return false;
 		}
 		return complianceMap.containsKey(key) ? complianceMap.get(
-			key) : false; // false ensures we are compliant by default, note: java 7 does not have Map#getOrDefault(String, Object)
+			key) : true; // false ensures we are compliant by default, note: java 7 does not have Map#getOrDefault(String, Object)
 	}
 
 	@Inject

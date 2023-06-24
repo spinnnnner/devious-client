@@ -98,21 +98,21 @@ public class InfoPanel extends PluginPanel
 	@Named("runelite.version")
 	private String runeliteVersion;
 
-	@Inject
-	@Named("runelite.github.link")
-	private String githubLink;
-
-	@Inject
-	@Named("runelite.discord.invite")
-	private String discordInvite;
-
-	@Inject
-	@Named("runelite.patreon.link")
-	private String patreonLink;
-
-	@Inject
-	@Named("runelite.wiki.link")
-	private String wikiLink;
+//	@Inject
+//	@Named("runelite.github.link")
+//	private String githubLink;
+//
+//	@Inject
+//	@Named("runelite.discord.invite")
+//	private String discordInvite;
+//
+//	@Inject
+//	@Named("runelite.patreon.link")
+//	private String patreonLink;
+//
+//	@Inject
+//	@Named("runelite.wiki.link")
+//	private String wikiLink;
 
 	static
 	{
@@ -200,10 +200,10 @@ public class InfoPanel extends PluginPanel
 			}
 		});
 
-		actionsContainer.add(buildLinkPanel(GITHUB_ICON, "Report an issue or", "make a suggestion", githubLink));
-		actionsContainer.add(buildLinkPanel(DISCORD_ICON, "Talk to us on our", "Discord server", discordInvite));
-		actionsContainer.add(buildLinkPanel(PATREON_ICON, "Become a patron to", "help support OpenOSRS", patreonLink));
-		actionsContainer.add(buildLinkPanel(WIKI_ICON, "Information about", "RuneLite and plugins", wikiLink));
+//		actionsContainer.add(buildLinkPanel(GITHUB_ICON, "Report an issue or", "make a suggestion", githubLink));
+//		actionsContainer.add(buildLinkPanel(DISCORD_ICON, "Talk to us on our", "Discord server", discordInvite));
+//		actionsContainer.add(buildLinkPanel(PATREON_ICON, "Become a patron to", "help support OpenOSRS", patreonLink));
+//		actionsContainer.add(buildLinkPanel(WIKI_ICON, "Information about", "RuneLite and plugins", wikiLink));
 
 		add(versionPanel, BorderLayout.NORTH);
 		add(actionsContainer, BorderLayout.CENTER);

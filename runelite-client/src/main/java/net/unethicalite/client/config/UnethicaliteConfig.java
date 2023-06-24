@@ -200,7 +200,8 @@ public interface UnethicaliteConfig extends Config
 	@ConfigSection(
 			name = "Pathfinder/Regions",
 			position = 1,
-			description = ""
+			description = "",
+			closedByDefault = true
 	)
 	String pathfinderSection = "Pathfinder/Regions";
 

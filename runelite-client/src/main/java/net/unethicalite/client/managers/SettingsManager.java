@@ -5,11 +5,13 @@ import joptsimple.OptionSet;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.events.FocusChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.events.NotificationFired;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.unethicalite.api.account.GameAccount;
 import net.unethicalite.api.game.Game;
@@ -31,6 +33,8 @@ public class SettingsManager
 	private final ConfigManager configManager;
 
 	private boolean initializedArgs;
+
+	private boolean renderingDisabled;
 
 	@Inject
 	public SettingsManager(
@@ -157,10 +161,10 @@ public class SettingsManager
 
 		if ("renderOff".equals(event.getKey()))
 		{
-			boolean enabled = Boolean.parseBoolean(event.getNewValue());
-			client.setLowCpu(enabled);
+			renderingDisabled = Boolean.parseBoolean(event.getNewValue());
+			client.setLowCpu(renderingDisabled);
 
-			if (enabled)
+			if (renderingDisabled)
 			{
 				client.setDrawCallbacks(DISABLE_RENDERING);
 			}
@@ -169,5 +173,25 @@ public class SettingsManager
 				client.setDrawCallbacks(null);
 			}
 		}
+	}
+	@Subscribe
+	private void onFocusChanged(FocusChanged event){
+		if (client.getDrawCallbacks() == DISABLE_RENDERING && (event.isFocused() || !renderingDisabled))
+		{
+			client.setDrawCallbacks(null);
+			return;
+		}
+		if (!event.isFocused() && renderingDisabled) // and disable rendering is on
+		{
+			client.setDrawCallbacks(DISABLE_RENDERING);
+		}
+	}
+
+	@Subscribe
+	private void onNotificationFired(NotificationFired event)
+	{
+//		if (client.getDrawCallbacks() == DISABLE_RENDERING){
+			client.setDrawCallbacks(null);
+//		}
 	}
 }

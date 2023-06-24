@@ -146,7 +146,7 @@ class VarInspector extends DevToolsFrame
 		this.clientThread = clientThread;
 		this.eventBus = eventBus;
 
-		setTitle("OpenOSRS Var Inspector");
+		setTitle("Runelite Var Inspector");
 
 		setLayout(new BorderLayout());
 

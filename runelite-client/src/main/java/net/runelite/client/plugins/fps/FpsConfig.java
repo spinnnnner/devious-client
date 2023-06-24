@@ -27,6 +27,7 @@ package net.runelite.client.plugins.fps;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
 import net.runelite.client.config.Range;
 
 @ConfigGroup(FpsPlugin.CONFIG_GROUP_KEY)
@@ -45,8 +46,8 @@ public interface FpsConfig extends Config
 	}
 
 	@Range(
-		min = 1,
-		max = 360
+		min = 0,
+		max = 100
 	)
 	@ConfigItem(
 		keyName = "maxFps",
@@ -71,8 +72,8 @@ public interface FpsConfig extends Config
 	}
 
 	@Range(
-		min = 1,
-		max = 360
+		min = 0,
+		max = 50
 	)
 	@ConfigItem(
 		keyName = "maxFpsUnfocused",
@@ -86,10 +87,21 @@ public interface FpsConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "disableRendering",
+		name = "Disable rendering",
+		description = "Disables rendering when unfocused, until a notification is sent",
+		position = 5
+	)
+	default boolean disableRendering()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "drawFps",
 		name = "Draw FPS indicator",
 		description = "Show a number in the corner for the current FPS",
-		position = 5
+		position = 6
 	)
 	default boolean drawFps()
 	{

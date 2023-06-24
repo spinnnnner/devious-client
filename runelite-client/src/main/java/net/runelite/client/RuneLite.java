@@ -73,12 +73,12 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.discord.DiscordService;
+//import net.runelite.client.discord.DiscordService;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.externalplugins.ExternalPluginManager;
+//import net.runelite.client.externalplugins.ExternalPluginManager;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.game.XpDropManager;
-import net.runelite.client.plugins.OPRSExternalPluginManager;
+//import net.runelite.client.plugins.OPRSExternalPluginManager;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.ClientUI;
@@ -132,16 +132,16 @@ public class RuneLite
 
 	@Inject
 	private net.runelite.client.plugins.PluginManager pluginManager;
-	@Inject
-	private ExternalPluginManager externalPluginManager;
-	@Inject
-	private OPRSExternalPluginManager oprsExternalPluginManager;
+//	@Inject
+//	private ExternalPluginManager externalPluginManager;
+//	@Inject
+//	private OPRSExternalPluginManager oprsExternalPluginManager;
 	@Inject
 	private EventBus eventBus;
 	@Inject
 	private ConfigManager configManager;
-	@Inject
-	private DiscordService discordService;
+//	@Inject
+//	private DiscordService discordService;
 	@Inject
 	private ClientSessionManager clientSessionManager;
 	@Inject
@@ -516,23 +516,23 @@ public class RuneLite
 		// Tell the plugin manager if client is outdated or not
 		pluginManager.setOutdated(isOutdated);
 
-		// Load external plugin manager
-		oprsExternalPluginManager.setupInstance();
-		oprsExternalPluginManager.startExternalUpdateManager();
-		oprsExternalPluginManager.startExternalPluginManager();
-		oprsExternalPluginManager.setOutdated(isOutdated);
-
-		// Update external plugins
-		oprsExternalPluginManager.update();
+//		// Load external plugin manager
+//		oprsExternalPluginManager.setupInstance();
+//		oprsExternalPluginManager.startExternalUpdateManager();
+//		oprsExternalPluginManager.startExternalPluginManager();
+//		oprsExternalPluginManager.setOutdated(isOutdated);
+//
+//		// Update external plugins
+//		oprsExternalPluginManager.update();
 
 		// Load the plugins, but does not start them yet.
 		// This will initialize configuration
 		pluginManager.loadCorePlugins();
 		pluginManager.loadSideLoadPlugins();
 
-		oprsExternalPluginManager.loadPlugins();
+//		oprsExternalPluginManager.loadPlugins();
 
-		externalPluginManager.loadExternalPlugins();
+//		externalPluginManager.loadExternalPlugins();
 
 		SplashScreen.stage(.70, null, "Finalizing configuration");
 
@@ -548,15 +548,15 @@ public class RuneLite
 		clientUI.init();
 
 		// Initialize Discord service
-		discordService.init();
+//		discordService.init();
 
 		// Register event listeners
 		eventBus.register(clientUI);
 		eventBus.register(pluginManager);
-		eventBus.register(externalPluginManager);
+//		eventBus.register(externalPluginManager);
 		eventBus.register(overlayManager);
 		eventBus.register(configManager);
-		eventBus.register(discordService);
+//		eventBus.register(discordService);
 
 		if (!isOutdated)
 		{
@@ -575,6 +575,8 @@ public class RuneLite
 			worldArg.ifPresent(this::setWorld);
 		}
 
+		client.setIdleTimeout(75000);
+
 		// Start plugins
 		pluginManager.startPlugins();
 
@@ -582,10 +584,10 @@ public class RuneLite
 
 		clientUI.show();
 
-		if (options.has("enable-telemetry"))
-		{
-			injector.getInstance(TelemetryClient.class).submitTelemetry();
-		}
+//		if (options.has("enable-telemetry"))
+//		{
+//			injector.getInstance(TelemetryClient.class).submitTelemetry();
+//		}
 
 		ReflectUtil.queueInjectorAnnotationCacheInvalidation(injector);
 		ReflectUtil.invalidateAnnotationCaches();

@@ -113,10 +113,10 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 		long time = System.currentTimeMillis();
 		Canvas canvas = client.getCanvas();
 		MouseEvent press = new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, time, 0, x, y, 1, false, button);
-		press.setSource("unethicalite");
+//		press.setSource("unethicalite");
 		canvas.dispatchEvent(press);
 		MouseEvent release = new MouseEvent(canvas, MouseEvent.MOUSE_RELEASED, time, 0, x, y, 1, false, button);
-		release.setSource("unethicalite");
+//		release.setSource("unethicalite");
 		canvas.dispatchEvent(release);
 	}
 
@@ -126,7 +126,7 @@ public abstract class HMouseHandlerMixin implements RSMouseHandler
 	{
 		Canvas canvas = client.getCanvas();
 		MouseEvent move = new MouseEvent(canvas, MouseEvent.MOUSE_MOVED, System.currentTimeMillis(), 0, x, y, 0, false);
-		move.setSource("unethicalite");
+//		move.setSource("unethicalite");
 		canvas.dispatchEvent(move);
 	}
 }

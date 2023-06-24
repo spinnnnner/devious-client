@@ -22,7 +22,7 @@ public class LocalPlayer
 
 	public static String getPassword()
 	{
-		return Static.getClient().getPassword();
+		return "hunter2";
 	}
 
 	public static int getTotalLevel()

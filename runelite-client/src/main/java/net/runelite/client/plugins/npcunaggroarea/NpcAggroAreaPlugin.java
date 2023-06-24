@@ -59,8 +59,6 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.slayer.SlayerPlugin;
-import net.runelite.client.plugins.slayer.SlayerPluginService;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.WildcardMatcher;
@@ -71,7 +69,6 @@ import net.runelite.client.util.WildcardMatcher;
 	tags = {"highlight", "lines", "unaggro", "aggro", "aggressive", "npcs", "area", "slayer"},
 	enabledByDefault = false
 )
-@PluginDependency(SlayerPlugin.class)
 public class NpcAggroAreaPlugin extends Plugin
 {
 	/*
@@ -117,9 +114,6 @@ public class NpcAggroAreaPlugin extends Plugin
 
 	@Inject
 	private Notifier notifier;
-
-	@Inject
-	private SlayerPluginService slayerPluginService;
 
 	@Getter
 	private final WorldPoint[] safeCenters = new WorldPoint[2];
@@ -275,15 +269,6 @@ public class NpcAggroAreaPlugin extends Plugin
 		if (npcLvl > 0 && playerLvl > npcLvl * 2 && !isInWilderness(npc.getWorldLocation()))
 		{
 			return false;
-		}
-
-		if (config.showOnSlayerTask())
-		{
-			List<NPC> targets = slayerPluginService.getTargets();
-			if (targets.contains(npc))
-			{
-				return true;
-			}
 		}
 
 		for (String pattern : npcNamePatterns)
